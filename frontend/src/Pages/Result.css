@@ -1,0 +1,235 @@
+/* Result.css - بنفس نمط Home.css */
+
+.result-container {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 40px 20px;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.result-content {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.result-card {
+    background: white;
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    animation: fadeInUp 0.5s ease-out;
+}
+
+.result-title {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.result-title .icon {
+    font-size: 50px;
+    display: block;
+    margin-bottom: 15px;
+}
+
+.result-title h1 {
+    background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.laptop-name {
+    font-size: 32px;
+    color: #667eea;
+    text-align: center;
+    margin: 20px 0;
+}
+
+.laptop-image {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.laptop-image img {
+    max-width: 300px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* قسم المواصفات */
+.specs-section {
+    background: #f8f9fa;
+    border-radius: 15px;
+    padding: 25px;
+    margin-top: 20px;
+}
+
+.specs-title {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #667eea;
+    display: inline-block;
+}
+
+.specs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.spec-item {
+    display: flex;
+    align-items: baseline;
+    padding: 10px 0;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.spec-label {
+    font-weight: bold;
+    width: 120px;
+    color: #667eea;
+}
+
+.spec-value {
+    color: #555;
+    flex: 1;
+}
+
+/* السعر */
+.price {
+    font-size: 28px;
+    font-weight: bold;
+    text-align: center;
+    margin: 25px 0;
+    padding: 15px;
+    background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+    border-radius: 12px;
+    color: white;
+}
+
+/* التفاصيل */
+.details {
+    background: #fff3cd;
+    border-left: 4px solid #ffc107;
+    padding: 15px 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+    color: #856404;
+    line-height: 1.6;
+}
+
+/* الأزرار */
+.buttons-container {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
+
+.result-button {
+    padding: 12px 28px;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+}
+
+.btn-secondary {
+    background: #6c757d;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background: #5a6268;
+    transform: translateY(-2px);
+}
+
+/* شاشة التحميل */
+.loading-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.loading-spinner {
+    width: 50px;
+    height: 50px;
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-top: 4px solid white;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* استجابة للشاشات الصغيرة */
+@media (max-width: 768px) {
+    .result-card {
+        padding: 25px;
+    }
+    
+    .result-title h1 {
+        font-size: 24px;
+    }
+    
+    .laptop-name {
+        font-size: 24px;
+    }
+    
+    .specs-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .spec-label {
+        width: 100px;
+        font-size: 13px;
+    }
+    
+    .spec-value {
+        font-size: 13px;
+    }
+    
+    .price {
+        font-size: 22px;
+    }
+    
+    .result-button {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+}

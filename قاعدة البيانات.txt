@@ -1,0 +1,238 @@
+CREATE TABLE laptops (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    brand VARCHAR(50),
+    processor VARCHAR(100),
+    ram VARCHAR(50),
+    storage VARCHAR(100),
+    gpu VARCHAR(100),
+    screen_size VARCHAR(20),
+    resolution VARCHAR(50),
+    price DECIMAL(10,2),
+    best_for TEXT,
+    image_url VARCHAR(255),
+    details TEXT
+);
+
+CREATE TABLE questions (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    question_text TEXT NOT NULL,
+    option1 VARCHAR(255),
+    option2 VARCHAR(255),
+    option3 VARCHAR(255),
+    option4 VARCHAR(255)
+);
+
+CREATE TABLE laptop_scores (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    laptop_id INT,
+    question_id INT,
+    option_index TINYINT,
+    score INT DEFAULT 0,
+    FOREIGN KEY (laptop_id) REFERENCES laptops(id) ON DELETE CASCADE,
+    FOREIGN KEY (question_id) REFERENCES questions(id) ON DELETE CASCADE
+);
+INSERT INTO questions (id, question_text, option1, option2, option3, option4) VALUES
+(1, 'What is your primary use for the laptop?', 'Programming', 'Gaming', 'Graphic Design', 'Video Editing'),
+(2, 'What is your approximate budget?', 'Less than $1000', '$1000-$1500', '$1500-$2000', 'More than $2000'),
+(3, 'What screen size do you prefer?', '13-14 inch', '15.6 inch', '17 inch', 'Not important'),
+(4, 'What weight is acceptable for you?', 'Light (<1.5kg)', 'Medium (1.5-2kg)', 'Heavy (>2kg)', 'Does not matter'),
+(5, 'How many hours of battery life do you need?', 'More than 8 hours', '5-8 hours', '3-5 hours', 'Does not matter'),
+(6, 'Which processor type do you prefer?', 'Intel Core i5', 'Intel Core i7', 'AMD Ryzen 5', 'AMD Ryzen 7'),
+(7, 'How much RAM do you need?', '8 GB', '16 GB', '32 GB', '64 GB or more'),
+(8, 'Which storage type do you prefer?', 'SSD 256GB', 'SSD 512GB', 'SSD 1TB', 'HDD + SSD combo'),
+(9, 'Do you need a dedicated graphics card?', 'No, integrated is fine', 'Yes, entry level', 'Yes, mid range', 'Yes, high end'),
+(10, 'What resolution do you prefer?', 'HD (1366x768)', 'Full HD (1920x1080)', '4K (3840x2160)', 'Not important'),
+(11, 'How important is build quality?', 'Not important', 'Somewhat important', 'Important', 'Very important (metal body)'),
+(12, 'Do you need a touchscreen?', 'No', 'Nice to have', 'Yes, must have', 'Not sure'),
+(13, 'How often will you travel with the laptop?', 'Never', 'Rarely', 'Often', 'Daily'),
+(14, 'Which operating system do you prefer?', 'Windows', 'macOS', 'Linux', 'No preference'),
+(15, 'Do you care about brand?', 'No', 'Yes, prefer Dell/HP', 'Yes, prefer Apple', 'Yes, prefer Asus/Lenovo'),
+(16, 'How important is the keyboard quality?', 'Not important', 'Somewhat important', 'Important', 'Very important (backlit, comfortable)'),
+(17, 'Do you need a numeric keypad?', 'No', 'Nice to have', 'Yes, must have', 'Not sure'),
+(18, 'How many USB ports do you need?', '1-2', '3', '4 or more', 'Does not matter'),
+(19, 'Do you need Thunderbolt / USB-C charging?', 'No', 'Nice to have', 'Yes, must have', 'Not sure'),
+(20, 'How important is after-sales support?', 'Not important', 'Somewhat important', 'Important', 'Very important');
+
+INSERT INTO laptops (id, name, brand, processor, ram, storage, gpu, screen_size, resolution, price, best_for, image_url, details) VALUES
+(1, 'Dell XPS 15', 'Dell', 'Intel Core i7-12700H', '16GB', '512GB SSD', 'NVIDIA RTX 3050', '15.6 inch', '1920x1080', 1800.00, 'programming,design', 'https://example.com/dell.jpg', 'Premium laptop with great display and performance for programming and design.'),
+(2, 'ASUS ROG Zephyrus G14', 'ASUS', 'AMD Ryzen 9 5900HS', '16GB', '1TB SSD', 'NVIDIA RTX 3060', '14 inch', '2560x1440', 1500.00, 'gaming,programming', 'https://example.com/asus.jpg', 'Powerful gaming laptop also suitable for heavy programming.'),
+(3, 'MacBook Pro 14', 'Apple', 'Apple M1 Pro', '16GB', '512GB SSD', 'Integrated 16-core', '14.2 inch', '3024x1964', 2000.00, 'programming,design,video_editing', 'https://example.com/macbook.jpg', 'Excellent for video editing, design, and programming with macOS.'),
+(4, 'Lenovo Legion 5', 'Lenovo', 'AMD Ryzen 7 5800H', '32GB', '1TB SSD', 'NVIDIA RTX 3070', '15.6 inch', '1920x1080', 1600.00, 'gaming,video_editing', 'https://example.com/legion.jpg', 'Great for gaming and video editing with high refresh rate screen.'),
+(5, 'HP Spectre x360', 'HP', 'Intel Core i7-1260P', '16GB', '512GB SSD', 'Intel Iris Xe', '13.5 inch', '3000x2000', 1400.00, 'design,programming', 'https://example.com/hp.jpg', 'Convertible laptop with touchscreen, ideal for design and portability.');
+
+
+DELETE FROM laptop_scores WHERE question_id = 1;
+INSERT INTO laptop_scores (laptop_id, question_id, option_index, score) VALUES
+(1,1,1,10),(1,1,2,2),(1,1,3,8),(1,1,4,5),
+(2,1,1,7),(2,1,2,10),(2,1,3,6),(2,1,4,8),
+(3,1,1,9),(3,1,2,1),(3,1,3,9),(3,1,4,10),
+(4,1,1,6),(4,1,2,10),(4,1,3,5),(4,1,4,9),
+(5,1,1,7),(5,1,2,3),(5,1,3,9),(5,1,4,6);
+
+
+DELETE FROM laptop_scores WHERE question_id = 2;
+INSERT INTO laptop_scores (laptop_id, question_id, option_index, score) VALUES
+(1,2,1,2),(1,2,2,6),(1,2,3,9),(1,2,4,7),
+(2,2,1,3),(2,2,2,8),(2,2,3,7),(2,2,4,5),
+(3,2,1,1),(3,2,2,4),(3,2,3,7),(3,2,4,10),
+(4,2,1,4),(4,2,2,7),(4,2,3,8),(4,2,4,6),
+(5,2,1,5),(5,2,2,8),(5,2,3,6),(5,2,4,3);
+
+
+DELETE FROM laptop_scores WHERE question_id = 3;
+INSERT INTO laptop_scores (laptop_id, question_id, option_index, score) VALUES
+(1,3,1,3),(1,3,2,9),(1,3,3,5),(1,3,4,6),
+(2,3,1,9),(2,3,2,6),(2,3,3,4),(2,3,4,7),
+(3,3,1,8),(3,3,2,5),(3,3,3,3),(3,3,4,6),
+(4,3,1,4),(4,3,2,10),(4,3,3,6),(4,3,4,5),
+(5,3,1,9),(5,3,2,5),(5,3,3,2),(5,3,4,7);
+
+
+DELETE FROM laptop_scores WHERE question_id = 4;
+INSERT INTO laptop_scores (laptop_id, question_id, option_index, score) VALUES
+(1,4,1,4),(1,4,2,8),(1,4,3,6),(1,4,4,7),
+(2,4,1,9),(2,4,2,5),(2,4,3,4),(2,4,4,6),
+(3,4,1,8),(3,4,2,6),(3,4,3,3),(3,4,4,5),
+(4,4,1,3),(4,4,2,7),(4,4,3,9),(4,4,4,6),
+(5,4,1,7),(5,4,2,8),(5,4,3,5),(5,4,4,4);
+
+
+DELETE FROM laptop_scores WHERE question_id = 5;
+INSERT INTO laptop_scores (laptop_id, question_id, option_index, score) VALUES
+(1,5,1,7),(1,5,2,8),(1,5,3,4),(1,5,4,5),
+(2,5,1,5),(2,5,2,7),(2,5,3,6),(2,5,4,6),
+(3,5,1,9),(3,5,2,6),(3,5,3,2),(3,5,4,4),
+(4,5,1,4),(4,5,2,6),(4,5,3,7),(4,5,4,5),
+(5,5,1,8),(5,5,2,7),(5,5,3,3),(5,5,4,4);
+
+
+DELETE FROM laptop_scores WHERE question_id = 6;
+INSERT INTO laptop_scores (laptop_id, question_id, option_index, score) VALUES
+(1,6,1,5),(1,6,2,9),(1,6,3,4),(1,6,4,7),
+(2,6,1,3),(2,6,2,7),(2,6,3,6),(2,6,4,10),
+(3,6,1,2),(3,6,2,4),(3,6,3,1),(3,6,4,3),
+(4,6,1,4),(4,6,2,8),(4,6,3,7),(4,6,4,9),
+(5,6,1,6),(5,6,2,8),(5,6,3,5),(5,6,4,6);
+
+
+DELETE FROM laptop_scores WHERE question_id = 7;
+INSERT INTO laptop_scores (laptop_id, question_id, option_index, score) VALUES
+(1,7,1,3),(1,7,2,9),(1,7,3,7),(1,7,4,4),
+(2,7,1,2),(2,7,2,7),(2,7,3,9),(2,7,4,5),
+(3,7,1,4),(3,7,2,8),(3,7,3,6),(3,7,4,3),
+(4,7,1,1),(4,7,2,5),(4,7,3,10),(4,7,4,6),
+(5,7,1,5),(5,7,2,8),(5,7,3,6),(5,7,4,3);
+
+
+DELETE FROM laptop_scores WHERE question_id = 8;
+INSERT INTO laptop_scores (laptop_id, question_id, option_index, score) VALUES
+(1,8,1,5),(1,8,2,9),(1,8,3,7),(1,8,4,6),
+(2,8,1,3),(2,8,2,8),(2,8,3,9),(2,8,4,7),
+(3,8,1,6),(3,8,2,8),(3,8,3,5),(3,8,4,4),
+(4,8,1,2),(4,8,2,6),(4,8,3,10),(4,8,4,8),
+(5,8,1,7),(5,8,2,8),(5,8,3,5),(5,8,4,5);
+
+DELETE FROM laptop_scores WHERE question_id = 9;
+INSERT INTO laptop_scores (laptop_id, question_id, option_index, score) VALUES
+(1,9,1,2),(1,9,2,6),(1,9,3,8),(1,9,4,7),
+(2,9,1,1),(2,9,2,4),(2,9,3,7),(2,9,4,10),
+(3,9,1,5),(3,9,2,4),(3,9,3,3),(3,9,4,2),
+(4,9,1,1),(4,9,2,3),(4,9,3,7),(4,9,4,10),
+(5,9,1,6),(5,9,2,5),(5,9,3,3),(5,9,4,2);
+
+DELETE FROM laptop_scores WHERE question_id = 10;
+INSERT INTO laptop_scores (laptop_id, question_id, option_index, score) VALUES
+(1,10,1,1),(1,10,2,8),(1,10,3,6),(1,10,4,5),
+(2,10,1,2),(2,10,2,7),(2,10,3,8),(2,10,4,6),
+(3,10,1,1),(3,10,2,4),(3,10,3,10),(3,10,4,3),
+(4,10,1,2),(4,10,2,9),(4,10,3,5),(4,10,4,4),
+(5,10,1,1),(5,10,2,6),(5,10,3,9),(5,10,4,5);
+
+
+DELETE FROM laptop_scores WHERE question_id = 11;
+INSERT INTO laptop_scores (laptop_id, question_id, option_index, score) VALUES
+(1,11,1,1),(1,11,2,3),(1,11,3,7),(1,11,4,10),
+(2,11,1,2),(2,11,2,4),(2,11,3,6),(2,11,4,8),
+(3,11,1,1),(3,11,2,2),(3,11,3,5),(3,11,4,10),
+(4,11,1,3),(4,11,2,5),(4,11,3,7),(4,11,4,8),
+(5,11,1,2),(5,11,2,5),(5,11,3,8),(5,11,4,9);
+
+DELETE FROM laptop_scores WHERE question_id = 12;
+INSERT INTO laptop_scores (laptop_id, question_id, option_index, score) VALUES
+(1,12,1,5),(1,12,2,7),(1,12,3,3),(1,12,4,4),
+(2,12,1,6),(2,12,2,5),(2,12,3,2),(2,12,4,3),
+(3,12,1,4),(3,12,2,6),(3,12,3,8),(3,12,4,5),
+(4,12,1,5),(4,12,2,4),(4,12,3,2),(4,12,4,3),
+(5,12,1,3),(5,12,2,8),(5,12,3,10),(5,12,4,6);
+
+
+DELETE FROM laptop_scores WHERE question_id = 13;
+INSERT INTO laptop_scores (laptop_id, question_id, option_index, score) VALUES
+(1,13,1,3),(1,13,2,6),(1,13,3,8),(1,13,4,9),
+(2,13,1,4),(2,13,2,7),(2,13,3,8),(2,13,4,6),
+(3,13,1,2),(3,13,2,5),(3,13,3,9),(3,13,4,10),
+(4,13,1,5),(4,13,2,6),(4,13,3,7),(4,13,4,5),
+(5,13,1,3),(5,13,2,8),(5,13,3,8),(5,13,4,7);
+
+DELETE FROM laptop_scores WHERE question_id = 14;
+INSERT INTO laptop_scores (laptop_id, question_id, option_index, score) VALUES
+(1,14,1,8),(1,14,2,1),(1,14,3,7),(1,14,4,5),
+(2,14,1,9),(2,14,2,1),(2,14,3,6),(2,14,4,5),
+(3,14,1,2),(3,14,2,10),(3,14,3,3),(3,14,4,4),
+(4,14,1,9),(4,14,2,1),(4,14,3,7),(4,14,4,5),
+(5,14,1,8),(5,14,2,2),(5,14,3,6),(5,14,4,5);
+
+
+DELETE FROM laptop_scores WHERE question_id = 15;
+INSERT INTO laptop_scores (laptop_id, question_id, option_index, score) VALUES
+(1,15,1,5),(1,15,2,9),(1,15,3,2),(1,15,4,7),
+(2,15,1,5),(2,15,2,6),(2,15,3,1),(2,15,4,8),
+(3,15,1,3),(3,15,2,4),(3,15,3,10),(3,15,4,5),
+(4,15,1,5),(4,15,2,7),(4,15,3,1),(4,15,4,9),
+(5,15,1,5),(5,15,2,8),(5,15,3,2),(5,15,4,7);
+
+
+DELETE FROM laptop_scores WHERE question_id = 16;
+INSERT INTO laptop_scores (laptop_id, question_id, option_index, score) VALUES
+(1,16,1,2),(1,16,2,4),(1,16,3,8),(1,16,4,9),
+(2,16,1,2),(2,16,2,5),(2,16,3,7),(2,16,4,9),
+(3,16,1,2),(3,16,2,4),(3,16,3,7),(3,16,4,9),
+(4,16,1,3),(4,16,2,5),(4,16,3,7),(4,16,4,8),
+(5,16,1,3),(5,16,2,6),(5,16,3,8),(5,16,4,9);
+
+
+DELETE FROM laptop_scores WHERE question_id = 17;
+INSERT INTO laptop_scores (laptop_id, question_id, option_index, score) VALUES
+(1,17,1,6),(1,17,2,4),(1,17,3,2),(1,17,4,5),
+(2,17,1,5),(2,17,2,4),(2,17,3,3),(2,17,4,5),
+(3,17,1,7),(3,17,2,3),(3,17,3,1),(3,17,4,4),
+(4,17,1,4),(4,17,2,5),(4,17,3,6),(4,17,4,5),
+(5,17,1,6),(5,17,2,5),(5,17,3,2),(5,17,4,5);
+
+
+DELETE FROM laptop_scores WHERE question_id = 18;
+INSERT INTO laptop_scores (laptop_id, question_id, option_index, score) VALUES
+(1,18,1,4),(1,18,2,7),(1,18,3,5),(1,18,4,6),
+(2,18,1,5),(2,18,2,7),(2,18,3,6),(2,18,4,5),
+(3,18,1,6),(3,18,2,5),(3,18,3,3),(3,18,4,5),
+(4,18,1,4),(4,18,2,8),(4,18,3,7),(4,18,4,5),
+(5,18,1,5),(5,18,2,6),(5,18,3,4),(5,18,4,6);
+
+
+DELETE FROM laptop_scores WHERE question_id = 19;
+INSERT INTO laptop_scores (laptop_id, question_id, option_index, score) VALUES
+(1,19,1,3),(1,19,2,5),(1,19,3,9),(1,19,4,6),
+(2,19,1,4),(2,19,2,6),(2,19,3,8),(2,19,4,5),
+(3,19,1,2),(3,19,2,4),(3,19,3,10),(3,19,4,5),
+(4,19,1,4),(4,19,2,6),(4,19,3,7),(4,19,4,5),
+(5,19,1,3),(5,19,2,7),(5,19,3,9),(5,19,4,5);
+
+
+DELETE FROM laptop_scores WHERE question_id = 20;
+INSERT INTO laptop_scores (laptop_id, question_id, option_index, score) VALUES
+(1,20,1,2),(1,20,2,4),(1,20,3,7),(1,20,4,9),
+(2,20,1,3),(2,20,2,5),(2,20,3,6),(2,20,4,8),
+(3,20,1,4),(3,20,2,6),(3,20,3,8),(3,20,4,10),
+(4,20,1,3),(4,20,2,5),(4,20,3,7),(4,20,4,9),
+(5,20,1,3),(5,20,2,5),(5,20,3,7),(5,20,4,8); 

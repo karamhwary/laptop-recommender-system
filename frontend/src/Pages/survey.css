@@ -1,0 +1,365 @@
+/* Survey.css */
+
+.survey-container {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 40px 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.survey-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.question-card {
+    background: white;
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    animation: fadeInUp 0.5s ease-out;
+}
+
+/* شريط التقدم */
+.progress-section {
+    margin-bottom: 30px;
+}
+
+.progress-label {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #666;
+}
+
+.progress-bar-container {
+    background-color: #e0e0e0;
+    border-radius: 10px;
+    height: 10px;
+    overflow: hidden;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    transition: width 0.3s ease;
+    border-radius: 10px;
+}
+
+/* رقم السؤال */
+.question-number {
+    color: #667eea;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* رأس السؤال (النص + زر المعلومات) */
+.question-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 25px;
+}
+
+.question-text {
+    font-size: 24px;
+    color: #333;
+    flex: 1;
+    margin: 0;
+    line-height: 1.4;
+}
+
+/* زر المعلومات ℹ️ */
+.tooltip-button {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid #667eea;
+    background: transparent;
+    color: #667eea;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.tooltip-button:hover {
+    background: #667eea;
+    color: white;
+    transform: scale(1.1);
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+.tooltip-button:active {
+    transform: scale(0.95);
+}
+
+/* خيارات الإجابات */
+.options-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 30px;
+}
+
+.option-button {
+    padding: 16px 20px;
+    font-size: 16px;
+    border: 2px solid #e0e0e0;
+    border-radius: 12px;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.3s ease;
+    background: white;
+    color: #333;
+}
+
+.option-button:hover {
+    border-color: #667eea;
+    transform: translateX(5px);
+}
+
+.option-button-selected {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-color: #667eea;
+    color: white;
+}
+
+.option-button-unselected {
+    background: white;
+    color: #333;
+}
+
+/* أزرار التنقل */
+.nav-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.nav-button {
+    padding: 12px 28px;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.nav-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.nav-button-previous {
+    background: #6c757d;
+    color: white;
+}
+
+.nav-button-previous:hover:not(:disabled) {
+    background: #5a6268;
+    transform: translateX(-2px);
+}
+
+.nav-button-next {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+.nav-button-next:hover:not(:disabled) {
+    transform: translateX(2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+}
+
+.nav-button-submit {
+    background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+    color: white;
+    box-shadow: 0 4px 15px rgba(40, 167, 69, 0.4);
+}
+
+.nav-button-submit:hover:not(:disabled) {
+    transform: translateX(2px);
+    box-shadow: 0 6px 20px rgba(40, 167, 69, 0.6);
+}
+
+/* شاشة التحميل */
+.loading-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.loading-spinner {
+    width: 50px;
+    height: 50px;
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-top: 4px solid white;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+.loading-text {
+    margin-top: 20px;
+    color: white;
+    font-size: 18px;
+}
+
+/* ===== نافذة الشرح المنبثقة (Tooltip Popup) ===== */
+.tooltip-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    animation: fadeIn 0.3s ease;
+    backdrop-filter: blur(4px);
+}
+
+.tooltip-popup {
+    background: white;
+    padding: 35px 40px;
+    border-radius: 20px;
+    max-width: 550px;
+    width: 90%;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    animation: slideUp 0.3s ease;
+    position: relative;
+}
+
+.tooltip-popup-icon {
+    font-size: 40px;
+    text-align: center;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.tooltip-popup h3 {
+    color: #667eea;
+    font-size: 22px;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.tooltip-popup p {
+    color: #444;
+    line-height: 1.8;
+    font-size: 16px;
+    text-align: center;
+}
+
+.tooltip-popup .close-button {
+    display: block;
+    margin: 20px auto 0;
+    padding: 12px 32px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.tooltip-popup .close-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+/* أنيميشن */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===== استجابة للشاشات الصغيرة ===== */
+@media (max-width: 768px) {
+    .survey-container {
+        padding: 20px;
+    }
+    
+    .question-card {
+        padding: 25px;
+    }
+    
+    .question-header {
+        flex-wrap: wrap;
+    }
+    
+    .question-text {
+        font-size: 20px;
+    }
+    
+    .tooltip-button {
+        width: 36px;
+        height: 36px;
+        font-size: 16px;
+    }
+    
+    .option-button {
+        padding: 12px 16px;
+        font-size: 14px;
+    }
+    
+    .nav-button {
+        padding: 10px 18px;
+        font-size: 14px;
+    }
+    
+    .tooltip-popup {
+        padding: 25px 20px;
+    }
+    
+    .tooltip-popup h3 {
+        font-size: 18px;
+    }
+    
+    .tooltip-popup p {
+        font-size: 14px;
+    }
+}

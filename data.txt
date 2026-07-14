@@ -1,0 +1,129 @@
+INSERT INTO laptops (id, name, brand, processor, ram, storage, gpu, screen_size, resolution, price, best_for, image_url, details) VALUES
+(6, 'Microsoft Surface Laptop 5', 'Microsoft', 'Intel Core i7-1265U', '16GB', '512GB SSD', 'Intel Iris Xe', '13.5 inch', '2256x1504', 1300.00, 'design,programming', 'https://example.com/surface.jpg', 'Premium ultrabook with 3:2 touchscreen, perfect for designers and programmers.'),
+(7, 'Acer Predator Helios 300', 'Acer', 'Intel Core i7-12700H', '16GB', '1TB SSD', 'NVIDIA RTX 3060', '15.6 inch', '1920x1080', 1200.00, 'gaming,programming', 'https://example.com/predator.jpg', 'Excellent gaming laptop with high refresh rate display.'),
+(8, 'Razer Blade 15', 'Razer', 'Intel Core i7-12800H', '16GB', '1TB SSD', 'NVIDIA RTX 3070 Ti', '15.6 inch', '2560x1440', 2500.00, 'gaming,design,programming', 'https://example.com/razer.jpg', 'Premium gaming laptop with sleek design and powerful performance.'),
+(9, 'Samsung Galaxy Book3 Ultra', 'Samsung', 'Intel Core i9-13900H', '32GB', '1TB SSD', 'NVIDIA RTX 4070', '16 inch', '2880x1800', 2200.00, 'video_editing,programming,design', 'https://example.com/samsung.jpg', 'Powerful creator laptop with stunning AMOLED display.'),
+(10, 'LG Gram 17', 'LG', 'Intel Core i7-1360P', '16GB', '1TB SSD', 'Intel Iris Xe', '17 inch', '2560x1600', 1700.00, 'programming,design', 'https://example.com/lg.jpg', 'Ultra-light 17-inch laptop with excellent battery life.');
+
+
+
+
+
+DELETE FROM laptop_scores WHERE question_id = 1 AND laptop_id IN (6,7,8,9,10);
+INSERT INTO laptop_scores (laptop_id, question_id, option_index, score) VALUES
+(6,1,1,8),(6,1,2,2),(6,1,3,9),(6,1,4,5),
+(7,1,1,7),(7,1,2,10),(7,1,3,5),(7,1,4,8),
+(8,1,1,8),(8,1,2,9),(8,1,3,8),(8,1,4,8),
+(9,1,1,9),(9,1,2,6),(9,1,3,9),(9,1,4,10),
+(10,1,1,8),(10,1,2,3),(10,1,3,7),(10,1,4,4);
+
+
+
+
+DELETE FROM laptop_scores WHERE question_id = 2 AND laptop_id IN (6,7,8,9,10);
+INSERT INTO laptop_scores (laptop_id, question_id, option_index, score) VALUES
+(6,2,1,6),(6,2,2,8),(6,2,3,5),(6,2,4,2),
+(7,2,1,5),(7,2,2,9),(7,2,3,6),(7,2,4,3),
+(8,2,1,1),(8,2,2,2),(8,2,3,5),(8,2,4,10),
+(9,2,1,1),(9,2,2,3),(9,2,3,6),(9,2,4,10),
+(10,2,1,2),(10,2,2,5),(10,2,3,8),(10,2,4,6);
+
+
+
+
+DELETE FROM laptop_scores WHERE question_id = 3 AND laptop_id IN (6,7,8,9,10);
+INSERT INTO laptop_scores (laptop_id, question_id, option_index, score) VALUES
+(6,3,1,9),(6,3,2,5),(6,3,3,2),(6,3,4,7),
+(7,3,1,3),(7,3,2,9),(7,3,3,6),(7,3,4,6),
+(8,3,1,6),(8,3,2,8),(8,3,3,4),(8,3,4,7),
+(9,3,1,4),(9,3,2,7),(9,3,3,6),(9,3,4,8),
+(10,3,1,3),(10,3,2,6),(10,3,3,9),(10,3,4,6);
+
+
+
+DELETE FROM laptop_scores WHERE question_id = 4 AND laptop_id IN (6,7,8,9,10);
+INSERT INTO laptop_scores (laptop_id, question_id, option_index, score) VALUES
+(6,4,1,8),(6,4,2,6),(6,4,3,2),(6,4,4,6),
+(7,4,1,3),(7,4,2,6),(7,4,3,8),(7,4,4,5),
+(8,4,1,5),(8,4,2,7),(8,4,3,5),(8,4,4,6),
+(9,4,1,5),(9,4,2,6),(9,4,3,6),(9,4,4,7),
+(10,4,1,7),(10,4,2,8),(10,4,3,5),(10,4,4,6);
+
+
+
+DELETE FROM laptop_scores WHERE question_id = 5 AND laptop_id IN (6,7,8,9,10);
+INSERT INTO laptop_scores (laptop_id, question_id, option_index, score) VALUES
+(6,5,1,8),(6,5,2,7),(6,5,3,3),(6,5,4,5),
+(7,5,1,4),(7,5,2,6),(7,5,3,7),(7,5,4,5),
+(8,5,1,5),(8,5,2,6),(8,5,3,6),(8,5,4,6),
+(9,5,1,6),(9,5,2,7),(9,5,3,5),(9,5,4,6),
+(10,5,1,9),(10,5,2,7),(10,5,3,3),(10,5,4,5);
+
+
+
+DELETE FROM laptop_scores WHERE question_id = 6 AND laptop_id IN (6,7,8,9,10);
+INSERT INTO laptop_scores (laptop_id, question_id, option_index, score) VALUES
+(6,6,1,6),(6,6,2,8),(6,6,3,5),(6,6,4,7),
+(7,6,1,4),(7,6,2,9),(7,6,3,5),(7,6,4,8),
+(8,6,1,3),(8,6,2,9),(8,6,3,4),(8,6,4,8),
+(9,6,1,2),(9,6,2,8),(9,6,3,4),(9,6,4,9),
+(10,6,1,5),(10,6,2,8),(10,6,3,5),(10,6,4,7);
+
+
+DELETE FROM laptop_scores WHERE question_id = 7 AND laptop_id IN (6,7,8,9,10);
+INSERT INTO laptop_scores (laptop_id, question_id, option_index, score) VALUES
+(6,7,1,4),(6,7,2,8),(6,7,3,6),(6,7,4,2),
+(7,7,1,3),(7,7,2,8),(7,7,3,7),(7,7,4,3),
+(8,7,1,2),(8,7,2,7),(8,7,3,8),(8,7,4,5),
+(9,7,1,1),(9,7,2,5),(9,7,3,9),(9,7,4,7),
+(10,7,1,3),(10,7,2,8),(10,7,3,7),(10,7,4,3);
+
+
+
+
+
+DELETE FROM laptop_scores WHERE question_id = 8 AND laptop_id IN (6,7,8,9,10);
+INSERT INTO laptop_scores (laptop_id, question_id, option_index, score) VALUES
+(6,8,1,6),(6,8,2,8),(6,8,3,6),(6,8,4,5),
+(7,8,1,4),(7,8,2,7),(7,8,3,8),(7,8,4,7),
+(8,8,1,2),(8,8,2,6),(8,8,3,9),(8,8,4,7),
+(9,8,1,2),(9,8,2,5),(9,8,3,9),(9,8,4,8),
+(10,8,1,5),(10,8,2,8),(10,8,3,7),(10,8,4,6);
+
+
+
+DELETE FROM laptop_scores WHERE question_id = 9 AND laptop_id IN (6,7,8,9,10);
+INSERT INTO laptop_scores (laptop_id, question_id, option_index, score) VALUES
+(6,9,1,7),(6,9,2,4),(6,9,3,2),(6,9,4,1),
+(7,9,1,1),(7,9,2,4),(7,9,3,8),(7,9,4,9),
+(8,9,1,1),(8,9,2,3),(8,9,3,7),(8,9,4,10),
+(9,9,1,1),(9,9,2,3),(9,9,3,6),(9,9,4,10),
+(10,9,1,8),(10,9,2,4),(10,9,3,3),(10,9,4,2);
+
+
+
+DELETE FROM laptop_scores WHERE question_id = 10 AND laptop_id IN (6,7,8,9,10);
+INSERT INTO laptop_scores (laptop_id, question_id, option_index, score) VALUES
+(6,10,1,1),(6,10,2,7),(6,10,3,8),(6,10,4,6),
+(7,10,1,2),(7,10,2,8),(7,10,3,5),(7,10,4,6),
+(8,10,1,1),(8,10,2,6),(8,10,3,9),(8,10,4,5),
+(9,10,1,1),(9,10,2,5),(9,10,3,10),(9,10,4,4),
+(10,10,1,1),(10,10,2,6),(10,10,3,8),(10,10,4,6);
+
+
+
+
+
+
+
+
+UPDATE laptops SET image_url = '/images/laptops/dell-xps-15.jpg' WHERE id = 1;
+UPDATE laptops SET image_url = '/images/laptops/asus-rog-g14.jpg' WHERE id = 2;
+UPDATE laptops SET image_url = '/images/laptops/macbook-pro-14.jpg' WHERE id = 3;
+UPDATE laptops SET image_url = '/images/laptops/lenovo-legion-5.jpg' WHERE id = 4;
+UPDATE laptops SET image_url = '/images/laptops/hp-spectre-x360.jpg' WHERE id = 5;
+UPDATE laptops SET image_url = '/images/laptops/surface-laptop-5.jpg' WHERE id = 6;
+UPDATE laptops SET image_url = '/images/laptops/acer-predator.jpg' WHERE id = 7;
+UPDATE laptops SET image_url = '/images/laptops/razer-blade-15.jpg' WHERE id = 8;
+UPDATE laptops SET image_url = '/images/laptops/samsung-galaxy.jpg' WHERE id = 9;
+UPDATE laptops SET image_url = '/images/laptops/lg-gram-17.jpg' WHERE id = 10;
